@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+<h1>Admin Dashboard</h1>
+<a href="/logout">Logout</a>
+<h2>Portal Statistics</h2>
+
+<a href="/admin/viewstudent">View all students</a>
+<p>Total Students: {{ students }}</p> 
+<p>Total Companies: {{ companies }}</p>
+<p>Total Drives: {{ drives }}</p>
+<p>Total Applications: {{ applications }}</p>
+
+<hr>
+<h2>Company Approvals</h2>
+<table border="1">
+<tr>
+<th>Company Name</th>
+<th>Website</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+{% for company in company_list %}
+<tr>
+<td>{{ company.company_name }}</td>
+<td>{{ company.website }}</td>
+<td>{{ company.approval_status }}</td>
+
+<td>
+{% if company.approval_status != "approved" %}
+<a href="/admin/approve_company/{{ company.id }}">Approve</a>
+{% else %}
+Approved
+{% endif %}
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+<hr>
+<h2>Placement Drive Approvals</h2>
+<table border="1">
+<tr>
+<th>Job Title</th>
+<th>Description</th>
+<th>Status</th>
+<th>Action</th>
+<th>View</th>
+</tr>
+{% for drive in drive_list %}
+
+<tr>
+<td>{{ drive.job_title }}</td>
+<td>{{ drive.job_description }}</td>
+<td>{{ drive.status }}</td>
+
+<td>
+{% if drive.status != "approved" %}
+<a href="/admin/approve_drive/{{ drive.id }}">Approve</a>
+{% else %}
+Approved
+{% endif %}
+</td>
+
+<td>
+{% if drive.status == "approved" %}
+<a href="/admin/applications/{{ drive.id }}">View applications</a>
+{% else %}
+Not yet approved
+{% endif %}
+</td>
+
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

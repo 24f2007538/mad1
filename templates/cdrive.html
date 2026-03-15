@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>Create Placement Drive</title>
+</head>
+
+<body>
+<h1>Create Placement Drive</h1>
+<a href="/company/dashboard">Back to Dashboard</a>
+<br><br>
+<form method="POST" action="/company/create_drive">
+
+<label>Job Title:</label><br>
+<input type="text" name="job_title" required>
+<br><br>
+
+<label>Job Description:</label><br>
+<textarea name="job_description" rows="4" cols="40" required></textarea>
+<br><br>
+
+<label>Eligibility Criteria:</label><br>
+<input type="text" name="eligibility" required>
+<br><br>
+
+<br>
+<button type="submit">Create Drive</button>
+</form>
+</body>
+</html>

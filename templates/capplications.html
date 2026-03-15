@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>Drive Applications</title>
+</head>
+<body>
+
+<h1>Applications for Drive</h1>
+<a href="/company/dashboard">Back to Dashboard</a>
+<hr>
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Roll No</th>
+<th>Department</th>
+<th>CGPA</th>
+<th>Status</th>
+<th>Update Status</th>
+</tr>
+{% for app, student in applications %}
+<tr>
+<td>{{ student.name }}</td>
+<td>{{ student.roll_no }}</td>
+<td>{{ student.department }}</td>
+<td>{{ student.cgpa }}</td>
+<td>{{ app.status or "Applied" }}</td>
+<td>
+<form method="POST" action="/company/update_application_status/{{ app.id }}">
+<select name="status">
+<option value="waiting">waiting</option>
+<option value="shortlisted">Shortlist</option>
+<option value="selected">Select</option>
+<option value="rejected">Reject</option>
+</select>
+<button type="submit">Update</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

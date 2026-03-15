@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Student Dashboard</title>
+</head>
+
+<body>
+<h1>Student Dashboard</h1>
+<a href="/logout">Logout</a>
+<hr>
+<h2>Available Placement Drives</h2>
+<table border="1">
+<tr>
+<th>Job Title</th>
+<th>Description</th>
+<th>Eligibility</th>
+<th>Apply</th>
+</tr>
+{% for drive in drives %}
+<tr>
+
+<td>{{ drive.job_title }}</td>
+<td>{{ drive.job_description }}</td>
+<td>{{ drive.eligibility_criteria }}</td>
+
+<td>
+<a href="/student/apply/{{ drive.id }}">Apply</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

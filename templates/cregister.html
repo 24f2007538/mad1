@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>Company Registration</title>
+</head>
+
+<body>
+<h2>Company Registration</h2>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<form method="POST" action="/company/register">
+
+<label>Company Name:</label><br>
+<input type="text" name="company_name" required>
+<br><br>
+
+<label>Email:</label><br>
+<input type="email" name="email" required>
+<br><br>
+
+<label>Password:</label><br>
+<input type="password" name="password" required>
+<br><br>
+
+<label>HR Contact:</label><br>
+<input type="text" name="hr_contact" required>
+<br><br>
+
+<label>Website:</label><br>
+<input type="url" name="website">
+<br><br>
+
+<button type="submit">Register</button>
+
+</form>
+<br>
+<a href="/">Back to Home</a>
+</body>
+</html>
